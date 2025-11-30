@@ -25,7 +25,7 @@ export default function UserDashboard() {
 
   const handleLogout = () => {
     localStorage.removeItem("token");  // remove JWT token
-    //window.location.href = "/login";   // redirect to login page
+    navigate("/login");   // redirect to login page
   };
 
   return (
