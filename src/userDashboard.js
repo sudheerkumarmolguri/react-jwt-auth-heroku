@@ -6,7 +6,7 @@ export default function UserDashboard() {
   const [user, setUser] = useState({});
 
   useEffect(() => {
-    axios.get("http://localhost:3000/user", {
+    axios.get("https://sudheer-dashboards.netlify.app/", {
       headers: {
         Authorization: "Bearer " + localStorage.getItem("token")
       }
@@ -25,7 +25,7 @@ export default function UserDashboard() {
 
   const handleLogout = () => {
     localStorage.removeItem("token");  // remove JWT token
-    window.location.href = "/login";   // redirect to login page
+    //window.location.href = "/login";   // redirect to login page
   };
 
   return (
