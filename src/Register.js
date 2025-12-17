@@ -14,8 +14,13 @@ function Register() {
       localStorage.setItem("token", res.data.token);
       alert("Registered Successfully");
       navigate("/login"); 
-    } catch {
-      alert("Error during registration");
+    } catch(error) {
+      if (error.response && error.response.status === 422) {
+        alert("User already exists");
+      } else {
+        alert("Error during registration");
+      }
+      
     }
   };
 
@@ -27,7 +32,10 @@ function Register() {
       <input placeholder="Password" type="password"
              onChange={(e) => setPassword(e.target.value)} />
              <br />
-      <button onClick={register}>Register</button>
+             <button onClick={(e) => { e.preventDefault(); register(); }}>
+                 Register
+             </button>
+
       <p>
         Already have an account?{" "}
         <a href="/login">Login</a>
