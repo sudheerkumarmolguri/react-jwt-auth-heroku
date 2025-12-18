@@ -49,6 +49,7 @@ export default function AdminDashboard() {
   }
   
   const updateOrderStatus = async (id, status) => {
+   
     console.log("STATUS SENT:", status); // 👈 MUST print approved/rejected
      // 🔥 Instant UI update
      setOrders(prevOrders =>
@@ -56,6 +57,7 @@ export default function AdminDashboard() {
         order.id === id ? { ...order, status } : order
       )
     );
+    
     try {
       const res = await API.patch(
         `http://localhost:3000/admin/orders/${id}`,
